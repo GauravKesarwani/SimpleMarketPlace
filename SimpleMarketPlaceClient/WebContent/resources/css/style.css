@@ -1,0 +1,51 @@
+body {background-color:#FFFFCC;}
+.ErrorControl
+    {
+        background-color: #FBE3E4;
+        border: solid 1px Red;
+    }
+      .SimpleControl
+    {
+        background-color: #FFFFFF;
+        border: solid 1px #000099;
+    }
+  
+.fontA {
+	color: #000099;
+	font-family: verdana;
+	font-size: 12px;
+}
+
+.fontB {
+	color: #000099;
+	font-family: verdana;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.fontH {
+	color: #000099;
+	font-family: verdana;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.fontE {
+	color: red;
+	font-family: verdana;
+	font-size: 12px;
+}
+
+.buttonStyle {
+	width: 120;
+	height: 60;
+	position: relative;
+	left: 0;
+	background-color: #3399CC;
+	color: #D9E8FF;
+	cursor: hand;
+	font-family: Verdana;
+	font-size: 10pt; FONT-WEIGHT =BOLD;
+	border: 2px outset #99ccff" 
+			onMouseOver="this.style.color = '#FFFFFF'" onMouseOut="this.style.color = '#D9E8FF'"
+}

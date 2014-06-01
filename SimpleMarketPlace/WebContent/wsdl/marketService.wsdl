@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://DefaultNamespace" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" xmlns:tns1="http://viewPackage" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://DefaultNamespace" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://viewPackage"/>
+   <element name="register">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:string"/>
+      <element name="fname" type="xsd:string"/>
+      <element name="lname" type="xsd:string"/>
+      <element name="passwd" type="xsd:string"/>
+      <element name="email" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="registerResponse">
+    <complexType>
+     <sequence>
+      <element name="registerReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="postAdv">
+    <complexType>
+     <sequence>
+      <element name="itemName" type="xsd:string"/>
+      <element name="desc" type="xsd:string"/>
+      <element name="sellerInfo" type="xsd:string"/>
+      <element name="price" type="xsd:string"/>
+      <element name="quty" type="xsd:string"/>
+      <element name="userid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="postAdvResponse">
+    <complexType/>
+   </element>
+   <element name="llogin">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="lloginResponse">
+    <complexType>
+     <sequence>
+      <element name="lloginReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewAdv">
+    <complexType>
+     <sequence>
+      <element name="userid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="viewAdvResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="viewAdvReturn" type="tns1:View_adv"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateBoughtItems">
+    <complexType>
+     <sequence>
+      <element name="advid" type="xsd:string"/>
+      <element name="sellerInfo" type="xsd:string"/>
+      <element name="qty" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateBoughtItemsResponse">
+    <complexType/>
+   </element>
+   <element name="updateSoldItems">
+    <complexType>
+     <sequence>
+      <element name="advid" type="xsd:string"/>
+      <element name="qty" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateSoldItemsResponse">
+    <complexType/>
+   </element>
+   <element name="getUserSoldItems">
+    <complexType>
+     <sequence>
+      <element name="userid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserSoldItemsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getUserSoldItemsReturn" type="tns1:SoldItems"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserAccount">
+    <complexType>
+     <sequence>
+      <element name="userid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserAccountResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getUserAccountReturn" type="tns1:BoughtItems"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserDetails">
+    <complexType>
+     <sequence>
+      <element name="userid" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserDetailsResponse">
+    <complexType>
+     <sequence>
+      <element name="getUserDetailsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="login">
+    <complexType>
+     <sequence>
+      <element name="userid" type="xsd:string"/>
+      <element name="passwd" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loginResponse">
+    <complexType>
+     <sequence>
+      <element name="loginReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://viewPackage" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="View_adv">
+    <sequence>
+     <element name="advID" nillable="true" type="xsd:string"/>
+     <element name="itemDesc" nillable="true" type="xsd:string"/>
+     <element name="itemName" nillable="true" type="xsd:string"/>
+     <element name="itemPrice" nillable="true" type="xsd:string"/>
+     <element name="itemQuantity" nillable="true" type="xsd:string"/>
+     <element name="newQuantity" nillable="true" type="xsd:string"/>
+     <element name="sellerInfo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SoldItems">
+    <sequence>
+     <element name="availquan" nillable="true" type="xsd:string"/>
+     <element name="itemName" nillable="true" type="xsd:string"/>
+     <element name="sellerInfo" nillable="true" type="xsd:string"/>
+     <element name="soldQuan" nillable="true" type="xsd:string"/>
+     <element name="userid" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="BoughtItems">
+    <sequence>
+     <element name="boughtQuan" nillable="true" type="xsd:string"/>
+     <element name="itemName" nillable="true" type="xsd:string"/>
+     <element name="sellerId" nillable="true" type="xsd:string"/>
+     <element name="sellerInfo" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getUserSoldItemsRequest">
+
+      <wsdl:part element="impl:getUserSoldItems" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="postAdvResponse">
+
+      <wsdl:part element="impl:postAdvResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lloginResponse">
+
+      <wsdl:part element="impl:lloginResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewAdvResponse">
+
+      <wsdl:part element="impl:viewAdvResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateSoldItemsResponse">
+
+      <wsdl:part element="impl:updateSoldItemsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserSoldItemsResponse">
+
+      <wsdl:part element="impl:getUserSoldItemsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateSoldItemsRequest">
+
+      <wsdl:part element="impl:updateSoldItems" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateBoughtItemsResponse">
+
+      <wsdl:part element="impl:updateBoughtItemsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginResponse">
+
+      <wsdl:part element="impl:loginResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserAccountRequest">
+
+      <wsdl:part element="impl:getUserAccount" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="registerRequest">
+
+      <wsdl:part element="impl:register" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserDetailsResponse">
+
+      <wsdl:part element="impl:getUserDetailsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lloginRequest">
+
+      <wsdl:part element="impl:llogin" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="postAdvRequest">
+
+      <wsdl:part element="impl:postAdv" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="registerResponse">
+
+      <wsdl:part element="impl:registerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateBoughtItemsRequest">
+
+      <wsdl:part element="impl:updateBoughtItems" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="viewAdvRequest">
+
+      <wsdl:part element="impl:viewAdv" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserDetailsRequest">
+
+      <wsdl:part element="impl:getUserDetails" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginRequest">
+
+      <wsdl:part element="impl:login" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserAccountResponse">
+
+      <wsdl:part element="impl:getUserAccountResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="marketService">
+
+      <wsdl:operation name="register">
+
+         <wsdl:input message="impl:registerRequest" name="registerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:registerResponse" name="registerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="postAdv">
+
+         <wsdl:input message="impl:postAdvRequest" name="postAdvRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:postAdvResponse" name="postAdvResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="llogin">
+
+         <wsdl:input message="impl:lloginRequest" name="lloginRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:lloginResponse" name="lloginResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewAdv">
+
+         <wsdl:input message="impl:viewAdvRequest" name="viewAdvRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:viewAdvResponse" name="viewAdvResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateBoughtItems">
+
+         <wsdl:input message="impl:updateBoughtItemsRequest" name="updateBoughtItemsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateBoughtItemsResponse" name="updateBoughtItemsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateSoldItems">
+
+         <wsdl:input message="impl:updateSoldItemsRequest" name="updateSoldItemsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateSoldItemsResponse" name="updateSoldItemsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserSoldItems">
+
+         <wsdl:input message="impl:getUserSoldItemsRequest" name="getUserSoldItemsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getUserSoldItemsResponse" name="getUserSoldItemsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserAccount">
+
+         <wsdl:input message="impl:getUserAccountRequest" name="getUserAccountRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getUserAccountResponse" name="getUserAccountResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserDetails">
+
+         <wsdl:input message="impl:getUserDetailsRequest" name="getUserDetailsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getUserDetailsResponse" name="getUserDetailsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login">
+
+         <wsdl:input message="impl:loginRequest" name="loginRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:loginResponse" name="loginResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="marketServiceSoapBinding" type="impl:marketService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="register">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="registerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="registerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="postAdv">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="postAdvRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="postAdvResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="llogin">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="lloginRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="lloginResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="viewAdv">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="viewAdvRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="viewAdvResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateBoughtItems">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateBoughtItemsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateBoughtItemsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateSoldItems">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateSoldItemsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateSoldItemsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserSoldItems">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserSoldItemsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserSoldItemsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserAccount">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserAccountRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserAccountResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserDetails">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserDetailsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserDetailsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loginRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loginResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="marketServiceService">
+
+      <wsdl:port binding="impl:marketServiceSoapBinding" name="marketService">
+
+         <wsdlsoap:address location="http://localhost/SimpleMarketPlace/services/marketService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
